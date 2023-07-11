@@ -1,0 +1,12 @@
+# Enable multilanguage site support
+[en]
+  languageName = "English"
+  title = "WU"
+  Params.subtitle = "Share lifelog technology code music.---A bosom friend afar brings a distant land near."
+  weight = 1
+
+[zh-cn]
+  languageName = "中文"
+  title = "无名"
+  Params.subtitle = "可怕的是你平庸度过这一生，还要骗自己平淡是真。-记录生活-音乐-代码-科技"
+  weight = 2
