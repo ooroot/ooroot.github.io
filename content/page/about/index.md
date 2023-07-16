@@ -14,7 +14,7 @@ menu:
             icon: user
 ---
 
-联系方式：314125366#qq.com
+联系方式：wulaoda@mail.com
 
 个人博客旨在分享生活 代码 音乐 科技
 
