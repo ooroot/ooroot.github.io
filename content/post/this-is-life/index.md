@@ -1,10 +1,11 @@
 ---
 title: "债"
 date: "2008-07-17"
+image: images/life.jpg
 categories:
     - Blog
 tags:
-  - log
+  - blog
   - life
 ---
 

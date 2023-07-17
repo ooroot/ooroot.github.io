@@ -2,7 +2,6 @@
 title: 给图片添加效果
 description: 给你的图片加上动态图形（PNG或GIF），包括：圆钉、透明胶、回形针、黄胶纸、花纹等等。
 date: 2008-10-21
-image: images/photo-mask.jpg
 categories:
     - Code
 tags: 
