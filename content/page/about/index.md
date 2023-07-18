@@ -14,12 +14,11 @@ menu:
             icon: user
 ---
 
-联系方式：wulaoda@mail.com
+联系方式：
 
-个人博客旨在分享生活 代码 音乐 科技
+Email：me#iiloveyou.org
 
-   博客由2008年开始陆续记录至今
-   
-> 期间 **Blogger Z-Blog mBlog WordPress Ghost Textpattern-CMS Typecho Hexo** 各种换各种折腾
+[电报 https://t.me/ooroot](https://t.me/ooroot)
 
-现在用 Github+Hugo 回归淳朴
+
+博客由2008年开始陆续记录至今，旨在分享生活 代码 音乐 科技等。期间 **Blogger Z-Blog mBlog WordPress Ghost Textpattern-CMS Typecho Hexo** 各种换各种折腾，现在用 **Github+Hugo** 回归淳朴。

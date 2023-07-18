@@ -14,6 +14,10 @@ menu:
             icon: user
 ---
 
-## Contact：314125366#qq.com
+## Contact：
+
+Email：me#iiloveyou.org
+
+[Telegram：https://t.me/ooroot](https://t.me/ooroo)
 
    Share lifelog technology code music.

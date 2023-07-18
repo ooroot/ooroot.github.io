@@ -1,10 +1,12 @@
 ---
 title: hello new
-description: new book
+description: 新的起点
 date: 2023-07-04
 image: images/book.jpg
 categories:
     - Blog
+tags: 
+    - life
 ---
 
 
