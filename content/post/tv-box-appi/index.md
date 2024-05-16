@@ -2,7 +2,7 @@
 title: tvbox资源
 description: 个人自用各种电视盒子资源集合
 date: 2024-05-17
-image: images/tv-box.jpg
+image: images/tv-box.png
 categories:
     - Code
 tags: 
