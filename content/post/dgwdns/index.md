@@ -212,7 +212,7 @@ net_rec=yes
 max_rec=5000
 ```
 
- 目录/home/paopaodns/custom.yaml 配置文件：
+目录/home/paopaodns/custom.yaml 配置文件：
 ```
 proxy-providers:
     provider1:
@@ -354,7 +354,7 @@ rules:
 mkdir ppgwios
 cd ppgwios
 docker pull sliamb/ppgwiso
-``
+```
 下载mihomo替换默认clash核心
 https://github.com/MetaCubeX/mihomo/releases
 
