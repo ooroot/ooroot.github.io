@@ -2,7 +2,7 @@
 title: 双网关双dns
 description: 双网关双dns，进行内外网各走一套
 date: 2024-10-11
-image: images/network-services.jpeg
+image: images/lnetwork-services.jpeg
 categories:
     - code
 tags:
@@ -21,31 +21,25 @@ tags:
 
 ### opwrt主路由:
 
-IP:192.168.1.1
-
-网关:192.168.1.1
-
-DNS:192.168.1.1
+- IP:192.168.1.1
+- 网关:192.168.1.1
+- DNS:192.168.1.1
 
 ### paopaogateway网关 简称PPGW
 
-IP:192.168.1.2
-
-网关:192.168.1.1
-
-DNS:192.168.1.1
+- IP:192.168.1.2
+- 网关:192.168.1.1
+- DNS:192.168.1.1
 
 ### paopaodns DNS 简称PPDNS
 
-IP:192.168.1.3
-
-网关:192.168.1.1
-
-DNS:192.168.1.1
+- IP:192.168.1.3
+- 网关:192.168.1.1
+- DNS:192.168.1.1
 
 ### adgh DNS
 
-IP:192.168.1.1:3000
+- IP:192.168.1.1:3000
 
 通过劫持opwrt主路由dns:53端口作为国内dns
 
@@ -56,15 +50,20 @@ IP:192.168.1.1:3000
 网络>路由>静态 IPv4 路由
 
 添加>静态 IPv4 路由：
+
 目标：7.0.0.0/8（ppgw.ini配置文件fake_cidr=7.0.0.0/8）
+
 网关：192.168.1.2（PPGW IP）
+
 添加静态 IPv6 路由：
+
 由ipv4 192.168.1.2 转换 ::ffff:c0a8:0102
 
 ### 通过MAC下发网关和固定IP
 
 网络>接口>DHCP/DNS>静态地址分配
-添加>
+
+- 添加
     - 选择MAC
     - IPv4地址
     - 标签（输入fq）
@@ -74,13 +73,10 @@ IP:192.168.1.1:3000
 
 DHCP服务器>高级设置>DHCP高级选项
 
-添加
+- 添加
+    - 6,192.168.1.1 #默认网关
+    - tag:fq,6,192.168.1.3 #PPDNS IP
 
-6,192.168.1.1（默认网关）
-
-指定fq标签下发网关
-
-tag:fq,6,192.168.1.3（PPDNS IP）
 
 ### adgh劫持53端口接管常规上网设备的DNS
 
@@ -212,7 +208,7 @@ net_rec=yes
 max_rec=5000
 ```
 
-目录/home/paopaodns/custom.yaml 配置文件：
+ 目录/home/paopaodns/custom.yaml 配置文件：
 ```
 proxy-providers:
     provider1:
