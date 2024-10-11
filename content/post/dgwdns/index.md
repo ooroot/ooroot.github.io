@@ -80,7 +80,7 @@ DHCP服务器>高级设置>DHCP高级选项
 
 指定fq标签下发网关
 
-tag:fq,6,192.168.123.3（PPDNS IP）
+tag:fq,6,192.168.1.3（PPDNS IP）
 
 ### adgh劫持53端口接管常规上网设备的DNS
 
