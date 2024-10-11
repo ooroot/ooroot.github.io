@@ -2,7 +2,7 @@
 title: 双网关双dns
 description: 双网关双dns，进行内外网各走一套
 date: 2024-10-11
-image: images/lnetwork-services.jpeg
+image: images/network-services.jpeg
 categories:
     - code
 tags:
