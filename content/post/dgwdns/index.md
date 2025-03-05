@@ -57,7 +57,7 @@ services:
       - "7889:7889/tcp"
 ```
 paopao-gateway ppgw.ini
-```
+```ini
 #paopao-gateway
 
 # mode=socks5|ovpn|yaml|suburl|free
