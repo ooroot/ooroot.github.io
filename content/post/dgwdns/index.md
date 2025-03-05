@@ -15,6 +15,13 @@ tags:
 
 本文只是作为个人记录
 
+up: 2005-03-05
+去掉adg，改为主路由+ppdns+ppgw
+主路由添加 路由 7.0.0.0/8 下一跳192.168.123.3（ppgw）
+lan-dhcp服务器-高级设置-dhcp选项
+添加：tag:q,6,192.168.123.2,192.168.123.1
+为包含q标签客户端指定dns1和dns2,123.2（ppdns），123.1为本地dns，即宽带dns也防止客户端自动添加dns2
+
 采用opwrt主路由+paopaogateway网关+paopaodns外网dns+adgh内网dns等进行默认设备常规上网，指定mac设备自由上网
 
 ### 架构
