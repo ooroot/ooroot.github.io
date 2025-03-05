@@ -10,3 +10,6 @@ tags:
     - linux
     - net
 ---
+
+
+![openwrt-ipv6](net-tools-2.jpg) 
