@@ -2,7 +2,7 @@
 title: 翻墙openwrt设置注意ipv6本地dns
 description: 翻墙openwrt设置注意ipv6本地dns
 date: 2025-03-05
-image: images/Screenshot_20250305_122252.jpg
+image:adb-shell-getprop.jpg
 categories:
     - NET
 tags: 
