@@ -20,3 +20,4 @@ tags:
 [net.dns3]: [192.168.123.1]
 ```
 dns1居然是本地ipv6链路地址，变成首选dns，查看路由器openwrt设置错误导致，取消勾选 本地 IPV6 DNS 服务器，解决。
+![openwrt-ipv6](openwrt-ipv6-dns.jpg) 
