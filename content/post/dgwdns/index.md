@@ -15,7 +15,7 @@ tags:
 
 本文只是作为个人记录
 
-up: 2005-03-05 去掉adg，改为主路由+ppdns+ppgw
+up: 2005-03-05 去掉adg，改为主路由+[ppdns](https://github.com/kkkgo/PaoPaoDNS)+[ppgw](https://github.com/kkkgo/PaoPaoGateWay)   
 
 ppdns改为国内国外分流，国外域名跳过代理使用force_dnscrypt_list.txt控制
 
