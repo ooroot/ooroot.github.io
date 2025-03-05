@@ -77,7 +77,7 @@ dns_port=5304
 
 # Clash's web dashboard
 clash_web_port="80"
-clash_web_password="515334"
+clash_web_password="123456"
 
 # default penport=no
 # socks+http mixed 1080
