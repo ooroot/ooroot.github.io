@@ -15,14 +15,131 @@ tags:
 
 本文只是作为个人记录
 
-up: 2005-03-05
+up: 2005-03-05 去掉adg，改为主路由+ppdns+ppgw
 
-去掉adg，改为主路由+ppdns+ppgw
+ppdns改为国内国外分流，国外域名跳过代理使用force_dnscrypt_list.txt控制
 
-主路由添加 路由 7.0.0.0/8 下一跳192.168.123.3（ppgw）
-lan-dhcp服务器-高级设置-dhcp选项
-添加：tag:q,6,192.168.123.2,192.168.123.1
-为包含q标签客户端指定dns1和dns2,123.2（ppdns），123.1为本地dns，即宽带dns也防止客户端自动添加dns2
+paopao-dns compose.yml
+```yml
+#version: "3"
+
+services:
+  paopaodns:
+    image: sliamb/paopaodns:latest
+    #image: public.ecr.aws/sliamb/paopaodns:latest
+    container_name: PaoPaoDNS
+    #network_mode: "host"
+    restart: always
+    volumes:
+      - ./data:/data
+    environment:
+      - TZ=Asia/Shanghai
+      - UPDATE=weekly
+      - DNS_SERVERNAME=PaoPaoDNS,blog.03k.org
+      - DNSPORT=53
+      - CNAUTO=yes
+      - CNFALL=yes
+      - CN_TRACKER=yes
+      - USE_HOSTS=no
+      - IPV6=yes
+      - SOCKS5=192.168.123.3:1080
+      - SERVER_IP=192.168.123.2
+      - CUSTOM_FORWARD=192.168.123.3:53
+      - AUTO_FORWARD=yes
+      - AUTO_FORWARD_CHECK=yes
+      - USE_MARK_DATA=yes
+      - HTTP_FILE=yes
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+      - "5304:5304/udp"
+      - "5304:5304/tcp"
+      - "7889:7889/tcp"
+```
+paopao-gateway ppgw.ini
+```
+#paopao-gateway
+
+# mode=socks5|ovpn|yaml|suburl|free
+# default: free
+mode=suburl
+
+# Set fakeip's CIDR here
+# default: fake_cidr=7.0.0.0/8
+fake_cidr=7.0.0.0/8
+
+# Set your trusted DNS here
+# default: dns_ip=1.0.0.1
+dns_ip=192.168.123.2
+# default: dns_port=53
+# If used with PaoPaoDNS, you can set the 5304 port
+dns_port=5304
+
+# Clash's web dashboard
+clash_web_port="80"
+clash_web_password="515334"
+
+# default penport=no
+# socks+http mixed 1080
+openport=yes
+
+# default: udp_enable=no
+udp_enable=no
+
+# sniff
+sniff=yes
+
+# default:30
+sleeptime=30
+
+# socks5 mode settting
+# default: socks5_ip=gatewayIP
+socks5_ip="192.168.123.3"
+# default: socks5_port="7890"
+socks5_port="1080"
+
+# ovpn mode settting
+# The ovpn file in the same directory as the ppgw.ini.
+# default: ovpnfile=custom.ovpn
+ovpnfile="custom.ovpn"
+ovpn_username=""
+ovpn_password=""
+
+# yaml mode settting
+# The yaml file in the same directory as the ppgw.ini.
+# default: yamlfile=custom.yaml
+yamlfile="custom.yaml"
+
+# suburl mode settting
+suburl="https://subscribe?token=69"
+subtime=1d
+
+# fast_node=check/yes/no
+fast_node=yes
+test_node_url="https://www.youtube.com/generate_204"
+ext_node="Traffic|Expire| GB|Days|Date"
+cpudelay="3000"
+# dns burn setting
+# depend on fast_node=yes & mode=suburl/yaml
+dns_burn=no
+# If used with PaoPaoDNS, you can set the PaoPaoDNS:53
+ex_dns="192.168.123.2:53"
+
+# Network traffic records
+net_rec=yes
+max_rec=5000
+```
+
+主路由添加：路由 7.0.0.0/8 下一跳192.168.123.3（ppgw）
+
+LAN-DHCP服务器-高级设置-DHCP选项
+添加：
+
+tag:q,6,192.168.123.2,192.168.123.1
+
+注：为包含q标签客户端指定dns1和dns2，
+
+123.2（ppdns），123.1为本地dns，即宽带dns也防止客户端自动添加dns2
 
 ---
 
