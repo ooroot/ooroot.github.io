@@ -2,7 +2,7 @@
 title: OpenWrt安装Nginx并绑定域名NAS
 description: OpenWrt安装Nginx并绑定域名，http转https、Cloudflare购买域名并绑定内网群晖，ddns-go，安全证书ssl
 date: 2025-08-22
-image: images/net.png
+image: images/net.jpeg
 categories:
     - code
 tags:
@@ -22,6 +22,7 @@ tags:
 ## DDNS-go 部分
 
 我是的是 immortalwrt 系统>软件包>更新列表后搜索ddns-go后安装即可
+
 我的域名在Cloudflare上，后台选择Cloudflare并填写Token（Cloudflare可以申请，顺便把ssl证书也一起申请了）,IPv6勾选启用，通过网卡获取ipv6或者其他方式，然后填写入要绑定的域名（例如：nas.xxxx.com），输入登录ddns-go后台的账户密码保存即可。
 
 ## Nginx 部分
@@ -29,27 +30,39 @@ tags:
 ### 安装
 
  1. immortalwrt软件包搜索luci-nginx并安装，会自动安装依赖包并启动nginx和禁用uhttpd（原openwrt精简版的web服务）
+ 
  2. 或者安装ssh用命令安装
+ 
 2.1
+
 安装 openssh-sftp-server
+
 ```shell
 # 安装
 opkg update && openssh-sftp-server
 # 允许通过root登录
 echo "PermitRootLogin yes" >> "/etc/ssh/sshd_config"
 ```
+
 2.2
+
 安装 nginx
+
 ```shell
 opkg update && opkg install luci-nginx && opkg install luci-ssl-nginx
 ```
 ### 配置nginx
 
 ssh登录路由器
+
 输入 uci set nginx.global.uci_enable=false 回车
+
 输入 uci commit 回车提交修改 脱离 OpenWrt UCI，方便施展拳脚
+
 输入vi /etc/nginx/nginx.conf
+
 粘贴下面的配置 Esc :wq 保存
+
 ```conf
 
 # This file is re-created when Nginx starts.
@@ -115,19 +128,25 @@ http {
 
 ```
 输入 nginx -t 测试一下配置文件有没有问题（nginx -T详细）
+
 输入 /etc/init.d/nginx reload 重新载入配置
 
 ### Cloudflare
 
 Cloudflare 购买域名
+
 域名解析
+
 申请ssl证书
+
 申请域名Token
+
 等....此处省略1万个步骤
 
 ### NAS域名反代
 
 把ssl证书和key上传 /etc/nginx/conf.d 其他路径也可以能访问即可
+
 新建配置 vi /etc/nginx/conf.d/nas.conf 粘贴以下配置并保存
 
 ```conf
@@ -159,6 +178,7 @@ server {
 ```
 
 测试 nginx -t
+
 重载 /etc/init.d/nginx reload
 
 ### 域名hosts劫持
@@ -166,7 +186,9 @@ server {
 在内网通过域名访问NAS时劫持域名为内网
 
 vi /etc/hosts
+
 添加 192.168.1.5 nas.xxx.com 用于将域名解析到IP地址
+
 保存 esc :wq 
 
 
@@ -174,4 +196,3 @@ vi /etc/hosts
 
 1. 浏览器缓存
 2. 
-
