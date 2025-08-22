@@ -2,7 +2,7 @@
 title: OpenWrt安装Nginx并绑定域名NAS
 description: OpenWrt安装Nginx并绑定域名，http转https、Cloudflare购买域名并绑定内网群晖，ddns-go，安全证书ssl
 date: 2025-08-22
-image: images/net.jpeg
+image: images/net.png
 categories:
     - code
 tags:
